@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FFFFF0;
+  --color-warm-yellow: #FFF8DC;
+  --color-warm-gray: #D3D3C0;
+  --color-dao-yellow: #DAA520;
+  --color-dao-blue: #1E90FF;
+  --color-dao-red: #DC143C;
+  --font-calligraphy: "Noto Serif", serif;
+}
+
+/* Custom base styles for GĐHĐ E-Commerce */
+@layer base {
+  body {
+    background-color: var(--color-ivory);
+    color: #374151;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
