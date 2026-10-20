@@ -1,51 +1,66 @@
-import { ShieldCheck, Award, HeartHandshake } from 'lucide-react'
+import { Gift, Heart, ShieldCheck } from 'lucide-react'
+import { useScrollReveal } from '../../../core/hooks/useScrollReveal'
 
 /**
- * Brand Badges & Craft Quality Seals row above the Footer.
- * Displays vintage line-art stamps confirming handcrafted quality.
+ * Brand Badges & Trust Quality Seals row above the Footer.
+ * Displays 3 core brand pillars in modern blue theme.
  */
 export default function BrandBadgesSection() {
+  const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.2 })
+
+  const badges = [
+    {
+      id: 1,
+      icon: Gift,
+      title: 'GIFT & THỦ CÔNG',
+      subtitle: 'Thủ công tinh xảo',
+    },
+    {
+      id: 2,
+      icon: Heart,
+      title: '100% CHẤT LƯỢNG',
+      subtitle: 'Quà tặng an tâm',
+    },
+    {
+      id: 3,
+      icon: ShieldCheck,
+      title: 'BẢO HÀNH CHÍNH HÃNG',
+      subtitle: 'Đổi trả dễ dàng',
+    },
+  ]
+
   return (
-    <section className="bg-white border-t border-gray-100 py-12 px-4">
-      <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-around gap-8 text-gray-700">
-        {/* Badge 1: Craft Ribbon Badge */}
-        <div className="flex flex-col items-center text-center group cursor-default">
-          <div className="w-16 h-16 rounded-full border-2 border-gray-300 border-dashed flex items-center justify-center mb-2 group-hover:border-dao-red group-hover:text-dao-red transition-all">
-            <HeartHandshake className="w-8 h-8 stroke-[1.5]" />
-          </div>
-          <span className="font-serif font-bold text-xs uppercase tracking-widest text-gray-800">
-            CHẾ TÁC THỦ CÔNG
-          </span>
-          <span className="text-[11px] text-gray-400">
-            Tỉ mỉ từng đường nét
-          </span>
-        </div>
+    <section
+      ref={sectionRef}
+      className={`bg-white border-t border-blue-50 py-10 md:py-14 px-4 reveal ${
+        isVisible ? 'is-visible' : ''
+      }`}
+    >
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {badges.map((badge) => {
+          const Icon = badge.icon
+          return (
+            <div
+              key={badge.id}
+              className="flex flex-col items-center text-center group cursor-default transition-all duration-300"
+            >
+              {/* Circular Blue Icon Badge */}
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#e0f2fe] text-[#034ea2] flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#034ea2] group-hover:text-white transition-all duration-300 shadow-2xs">
+                <Icon className="w-7 h-7 stroke-[2]" />
+              </div>
 
-        {/* Badge 2: Laurel Quality Guarantee Seal */}
-        <div className="flex flex-col items-center text-center group cursor-default">
-          <div className="w-16 h-16 rounded-full border-2 border-gray-800 flex items-center justify-center mb-2 group-hover:border-dao-yellow group-hover:text-dao-yellow transition-all">
-            <Award className="w-8 h-8 stroke-[1.5]" />
-          </div>
-          <span className="font-serif font-bold text-xs uppercase tracking-widest text-gray-800">
-            100% CHẤT LƯỢNG
-          </span>
-          <span className="text-[11px] text-gray-400">
-            Gỗ tự nhiên & Bền đẹp
-          </span>
-        </div>
+              {/* Title */}
+              <h4 className="font-extrabold text-xs sm:text-sm uppercase tracking-wider text-slate-800 mb-1 group-hover:text-[#034ea2] transition-colors">
+                {badge.title}
+              </h4>
 
-        {/* Badge 3: Seal of Authenticity */}
-        <div className="flex flex-col items-center text-center group cursor-default">
-          <div className="w-16 h-16 rounded-full border-2 border-gray-300 border-dashed flex items-center justify-center mb-2 group-hover:border-dao-blue group-hover:text-dao-blue transition-all">
-            <ShieldCheck className="w-8 h-8 stroke-[1.5]" />
-          </div>
-          <span className="font-serif font-bold text-xs uppercase tracking-widest text-gray-800">
-            BẢO HÀNH CHÍNH HÃNG
-          </span>
-          <span className="text-[11px] text-gray-400">
-            Đổi mới nếu lỗi in/khắc
-          </span>
-        </div>
+              {/* Subtitle */}
+              <span className="text-xs text-slate-400 font-medium">
+                {badge.subtitle}
+              </span>
+            </div>
+          )
+        })}
       </div>
     </section>
   )

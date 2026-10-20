@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
-import { User, ShoppingBag, PhoneCall, Sparkles } from 'lucide-react'
+import { User, ShoppingBag, Phone, Sparkles, LogIn } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import { ROUTES } from '../../../core/constants/routes'
 
 /**
- * TopBar component situated above the main navigation.
- * Displays quick links for customer account, orders, hotline, and cart.
- * Matches the top utility bar in the mockup.
+ * TopBar component matching Cao Dai Gifts design.
+ * Features:
+ * - Left: Hotline pill + Handwritten custom text announcement
+ * - Right: Account, Register, Cart with smooth glassic style
  */
 export default function TopBar() {
   const { isAuthenticated, user } = useSelector((state) => state.auth || {})
@@ -14,54 +15,70 @@ export default function TopBar() {
   const cartCount = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0)
 
   return (
-    <div className="bg-[#fffdf9] border-b border-gray-100 text-xs text-gray-600 py-1.5 px-4">
+    <div className="bg-[#edf5fd]/90 backdrop-blur-xs border-b border-[#dcecfb] text-xs text-[#0a4d9c] py-2 px-4 animate-slide-down">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: Hotline & Service announcement */}
-        <div className="hidden sm:flex items-center gap-4 text-gray-500">
-          <span className="inline-flex items-center gap-1.5">
-            <PhoneCall className="w-3.5 h-3.5 text-dao-red" />
-            Hotline: <strong className="text-gray-700">0934 323 882</strong>
-          </span>
-          <span className="hidden md:inline-flex items-center gap-1 text-dao-yellow font-medium">
-            <Sparkles className="w-3 h-3" />
-            Khắc tên & Lời chúc ý nghĩa theo yêu cầu
+        <div className="flex items-center gap-3 text-xs">
+          <a
+            href="tel:0934323882"
+            className="inline-flex items-center gap-1.5 font-medium hover:text-blue-700 transition-colors"
+          >
+            <span className="w-5 h-5 rounded-full bg-[#0a4d9c] text-white flex items-center justify-center shadow-2xs">
+              <Phone className="w-3 h-3 fill-current" />
+            </span>
+            <span>
+              Hotline: <strong className="font-bold">0934 323 882</strong>
+            </span>
+          </a>
+
+          <span className="hidden sm:inline text-blue-200">|</span>
+
+          <span className="hidden md:inline-flex items-center gap-1 font-handwriting text-base font-semibold text-[#0a4d9c]">
+            <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse-soft" />
+            <span>Khắc tên &amp; Lời chúc ý nghĩa theo yêu cầu</span>
+            <span>💛</span>
           </span>
         </div>
 
         {/* Right: User account & links */}
-        <div className="flex items-center gap-5 ml-auto text-dao-red font-medium">
+        <div className="flex items-center gap-3 sm:gap-4 ml-auto font-medium text-[#0a4d9c]">
           {isAuthenticated ? (
             <Link
               to={ROUTES.PROFILE}
-              className="inline-flex items-center gap-1.5 hover:underline"
+              className="inline-flex items-center gap-1.5 hover:text-blue-700 transition-colors"
             >
-              <User className="w-3.5 h-3.5" />
+              <User className="w-3.5 h-3.5 stroke-[2]" />
               <span>{user?.name || 'Tài khoản'}</span>
             </Link>
           ) : (
             <>
               <Link
                 to={ROUTES.LOGIN}
-                className="inline-flex items-center gap-1 hover:underline"
+                className="inline-flex items-center gap-1.5 hover:text-blue-700 transition-colors"
               >
-                <User className="w-3.5 h-3.5" />
+                <User className="w-3.5 h-3.5 stroke-[2]" />
                 <span>Tài khoản</span>
               </Link>
-              <span className="text-gray-300">|</span>
+
+              <span className="text-blue-200">|</span>
+
               <Link
                 to={ROUTES.REGISTER}
-                className="hover:underline"
+                className="inline-flex items-center gap-1 hover:text-blue-700 transition-colors"
               >
-                Đăng ký
+                <LogIn className="w-3.5 h-3.5 stroke-[2]" />
+                <span>Đăng ký</span>
               </Link>
             </>
           )}
 
+          <span className="text-blue-200">|</span>
+
           <Link
             to={ROUTES.CART}
-            className="inline-flex items-center gap-1.5 hover:underline"
+            className="inline-flex items-center gap-1.5 hover:text-blue-700 transition-colors group"
           >
-            <ShoppingBag className="w-3.5 h-3.5" />
+            <ShoppingBag className="w-3.5 h-3.5 stroke-[2] group-hover:scale-110 transition-transform" />
             <span>Giỏ hàng ({cartCount})</span>
           </Link>
         </div>
