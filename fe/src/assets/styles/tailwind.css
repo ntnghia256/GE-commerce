@@ -7,15 +7,89 @@
   --color-dao-yellow: #DAA520;
   --color-dao-blue: #1E90FF;
   --color-dao-red: #DC143C;
+  --color-brand-blue: #034ea2;
+  --color-brand-blue-light: #60a5fa;
+  --color-brand-yellow: #f39c12;
+  --color-brand-yellow-light: #facc15;
+  --color-brand-red: #ef4444;
+  --font-sans: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-calligraphy: "Noto Serif", serif;
+  --font-serif: 'Noto Serif', serif;
+  --font-handwriting: 'Caveat', cursive;
 }
 
 /* Custom base styles for GĐHĐ E-Commerce */
 @layer base {
   body {
+    font-family: var(--font-sans);
     background-color: var(--color-ivory);
     color: #374151;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* Smooth glassic & animation utilities */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 3.5s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 2.5s ease-in-out infinite;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.glassic-header {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 238, 253, 0.7);
+}
+
+.glassic-pill {
+  background: rgba(239, 246, 255, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(191, 219, 254, 0.6);
+  box-shadow: 0 4px 20px -2px rgba(30, 64, 175, 0.05);
+}
+
+/* Scroll reveal utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }

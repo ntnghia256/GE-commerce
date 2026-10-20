@@ -11,15 +11,19 @@ export default {
         ivory: '#FFFFF0',
         'warm-yellow': '#FFF8DC',
         'warm-gray': '#D3D3C0',
-        // Cao Dai religious accent colors (Yellow - Blue - Red)
-        'dao-yellow': '#DAA520',
-        'dao-blue': '#1E90FF',
-        'dao-red': '#DC143C',
+        // Brand Colors
+        'brand-blue': '#034ea2',
+        'brand-blue-light': '#60a5fa',
+        'brand-yellow': '#f39c12',
+        'brand-yellow-light': '#facc15',
+        'brand-red': '#ef4444',
       },
       fontFamily: {
-        sans: ['system-ui', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Nunito', 'system-ui', 'Segoe UI', 'Roboto', 'sans-serif'],
         // Calligraphy font for product customization
         calligraphy: ['"Noto Serif"', 'serif'],
+        serif: ['"Noto Serif"', 'serif'],
+        handwriting: ['"Caveat"', 'cursive'],
       },
     },
   },

@@ -62,7 +62,7 @@ export const HOME_MOCK_DATA = {
     },
   ],
 
-  // Section "Sản phẩm khuyến mãi" (Flash Sale)
+  // Section "Sản phẩm khuyến mãi" (Flash Sale) - Expanded to 4 products
   saleProducts: [
     {
       id: 'sale-1',
@@ -88,6 +88,30 @@ export const HOME_MOCK_DATA = {
       rating: 5,
       reviewCount: 42,
     },
+    {
+      id: 'sale-3',
+      name: 'Bộ quà tặng Tranh tường & Sổ tay nghệ thuật',
+      price: 350000,
+      originalPrice: 420000,
+      discountPercent: 16,
+      imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80',
+      isCustomizable: true,
+      category: 'qua-tang',
+      rating: 5,
+      reviewCount: 54,
+    },
+    {
+      id: 'sale-4',
+      name: 'Khung ảnh gỗ khắc laser Thiên Nhãn & Lời chúc',
+      price: 220000,
+      originalPrice: 260000,
+      discountPercent: 15,
+      imageUrl: 'https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=700&q=80',
+      isCustomizable: true,
+      category: 'do-luu-niem',
+      rating: 5,
+      reviewCount: 29,
+    },
   ],
 
   // Category Tabs for "Tất cả sản phẩm"
@@ -98,7 +122,7 @@ export const HOME_MOCK_DATA = {
     { id: 'do-trang-tri', name: 'ĐỒ TRANG TRÍ' },
   ],
 
-  // Products under Tabs
+  // Products under Tabs - Expanded to 8 products
   allProducts: [
     {
       id: 'prod-1',
@@ -114,6 +138,18 @@ export const HOME_MOCK_DATA = {
     },
     {
       id: 'prod-2',
+      name: 'Bộ quà tặng Tranh tường & Sổ tay nghệ thuật',
+      price: 350000,
+      originalPrice: 420000,
+      discountPercent: 16,
+      imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80',
+      isCustomizable: true,
+      category: 'qua-tang',
+      rating: 5,
+      reviewCount: 76,
+    },
+    {
+      id: 'prod-3',
       name: 'Tranh treo tường Khung gỗ Wooden Classic',
       price: 300000,
       originalPrice: 380000,
@@ -125,7 +161,7 @@ export const HOME_MOCK_DATA = {
       reviewCount: 42,
     },
     {
-      id: 'prod-3',
+      id: 'prod-4',
       name: 'Khung ảnh gỗ khắc laser Thiên Nhãn & Lời chúc',
       price: 220000,
       originalPrice: 260000,
@@ -137,16 +173,52 @@ export const HOME_MOCK_DATA = {
       reviewCount: 29,
     },
     {
-      id: 'prod-4',
-      name: 'Bộ quà tặng Trầm hương & Sổ tay khắc tên cá nhân',
-      price: 350000,
-      originalPrice: 420000,
-      discountPercent: 16,
-      imageUrl: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80',
+      id: 'prod-5',
+      name: 'Đèn ngủ gỗ khắc họa tiết hoa sen & lời an lành',
+      price: 280000,
+      originalPrice: 340000,
+      discountPercent: 18,
+      imageUrl: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80',
+      isCustomizable: true,
+      category: 'do-trang-tri',
+      rating: 5,
+      reviewCount: 63,
+    },
+    {
+      id: 'prod-6',
+      name: 'Hộp trà gỗ bách diệp khắc tên quà tặng doanh nghiệp',
+      price: 390000,
+      originalPrice: 450000,
+      discountPercent: 13,
+      imageUrl: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80',
       isCustomizable: true,
       category: 'qua-tang',
       rating: 5,
-      reviewCount: 54,
+      reviewCount: 19,
+    },
+    {
+      id: 'prod-7',
+      name: 'Móc khóa gỗ khắc tên theo yêu cầu 2 mặt',
+      price: 65000,
+      originalPrice: 85000,
+      discountPercent: 23,
+      imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=700&q=80',
+      isCustomizable: true,
+      category: 'do-luu-niem',
+      rating: 5,
+      reviewCount: 112,
+    },
+    {
+      id: 'prod-8',
+      name: 'Đồng hồ gỗ treo tường phong cách mộc mạc',
+      price: 420000,
+      originalPrice: 500000,
+      discountPercent: 16,
+      imageUrl: 'https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=700&q=80',
+      isCustomizable: true,
+      category: 'do-trang-tri',
+      rating: 5,
+      reviewCount: 35,
     },
   ],
 

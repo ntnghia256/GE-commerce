@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 import { HOME_MOCK_DATA } from '../../../modules/catalog/data/homeMockData'
+import { useScrollReveal } from '../../../core/hooks/useScrollReveal'
 
 /**
- * Full-width Testimonial Section with warm festive background.
- * Displays customer portrait, designation, and heartfelt testimonial quote.
+ * Full-width Testimonial Section with warm ambient atmosphere.
+ * Matches Cao Dai Gifts customer review showcase.
  */
 export default function TestimonialSection() {
   const { testimonials } = HOME_MOCK_DATA
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.15 })
 
   const current = testimonials[currentIndex] || testimonials[0]
 
@@ -21,74 +23,93 @@ export default function TestimonialSection() {
   }
 
   return (
-    <section className="relative my-12 py-16 md:py-24 overflow-hidden">
-      {/* Background with warm golden festive ambient image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=1920&q=80')`,
-        }}
-      />
-      {/* Dark & Gold ambient overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70 backdrop-blur-2xs" />
+    <section
+      ref={sectionRef}
+      className={`relative my-10 md:my-14 max-w-5xl mx-auto px-4 reveal ${
+        isVisible ? 'is-visible' : ''
+      }`}
+    >
+      {/* Testimonial Card with Sunset Wheat Background */}
+      <div className="relative rounded-3xl overflow-hidden shadow-xl p-8 md:p-12 text-white">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-all duration-700"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=1600&q=80')`,
+          }}
+        />
 
-      {/* Content Container */}
-      <div className="relative max-w-4xl mx-auto px-6 text-center text-white z-10">
-        {/* Customer Avatar with subtle golden border */}
-        <div className="relative inline-block mb-4">
-          <img
-            src={current.avatar}
-            alt={current.name}
-            className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-3 border-white/90 shadow-xl mx-auto ring-4 ring-dao-yellow/40"
-          />
-        </div>
+        {/* Ambient Dark & Warm Gold Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/80 backdrop-blur-2xs" />
 
-        {/* Customer Name & Designation */}
-        <h3 className="text-base md:text-lg font-serif font-bold text-warm-yellow tracking-wide mb-4">
-          {current.name} - <span className="font-sans text-xs font-normal text-gray-300 uppercase tracking-widest">{current.role}</span>
-        </h3>
+        {/* Content Container */}
+        <div className="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center">
+          {/* Avatar with Golden Ring */}
+          <div className="flex items-center gap-4 mb-4">
+            <img
+              src={current.avatar}
+              alt={current.name}
+              className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-white ring-4 ring-amber-400 shadow-md"
+            />
 
-        {/* Quote Icon */}
-        <div className="flex justify-center mb-3 text-white/50">
-          <Quote className="w-8 h-8 rotate-180" />
-        </div>
+            <div className="text-left">
+              <h3 className="text-lg md:text-xl font-bold text-amber-300 font-serif tracking-wide">
+                {current.name}
+              </h3>
 
-        {/* Testimonial Quote */}
-        <p className="text-sm md:text-base lg:text-lg italic text-gray-100 font-serif leading-relaxed max-w-2xl mx-auto">
-          "{current.quote}"
-        </p>
-
-        {/* Navigation Controls if more than 1 testimonial */}
-        {testimonials.length > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <button
-              onClick={handlePrev}
-              aria-label="Lời chứng thực trước"
-              className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <div className="flex gap-1.5">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  aria-label={`Chuyển đến lời chứng thực ${i + 1}`}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    currentIndex === i ? 'bg-dao-yellow w-6' : 'bg-white/40'
-                  }`}
-                />
-              ))}
+              {/* 5 Stars Rating */}
+              <div className="flex items-center gap-1 mt-1">
+                <div className="flex text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <span className="text-xs text-amber-200 font-semibold ml-1">
+                  • 4.9p
+                </span>
+              </div>
             </div>
-            <button
-              onClick={handleNext}
-              aria-label="Lời chứng thực kế tiếp"
-              className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
           </div>
-        )}
+
+          {/* Customer Quote */}
+          <p className="text-base sm:text-lg md:text-xl italic font-serif text-slate-100 leading-relaxed my-3 px-2">
+            "{current.quote}"
+          </p>
+
+          {/* Navigation Controls */}
+          {testimonials.length > 1 && (
+            <div className="flex items-center justify-center gap-3 mt-4">
+              <button
+                onClick={handlePrev}
+                aria-label="Đánh giá trước"
+                className="p-1 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div className="flex gap-1.5">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    aria-label={`Chuyển đến đánh giá ${i + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentIndex === i ? 'bg-amber-400 w-6' : 'bg-white/40 w-2'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={handleNext}
+                aria-label="Đánh giá kế tiếp"
+                className="p-1 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )

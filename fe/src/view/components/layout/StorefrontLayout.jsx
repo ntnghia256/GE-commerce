@@ -9,7 +9,7 @@ import Footer from './Footer'
  */
 export default function StorefrontLayout() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#fffdfa]">
+    <div className="min-h-screen flex flex-col bg-[#f5faff]">
       <TopBar />
       <Header />
       <main className="flex-1">
